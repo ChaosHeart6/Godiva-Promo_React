@@ -1,4 +1,4 @@
-function ProductCard({name, price, image}){
+function ProductCard({name, price, image, onAdd}){
     return(
         <div style={{
             boader: '1px solid #ccc',
@@ -13,6 +13,7 @@ function ProductCard({name, price, image}){
             <img src={image} alt={name} style={{width: '100%', borderRadius: '8px'}} />
             <h3>{name}</h3>
             <p style={{color:'darked',fontWeight: 'bold'}}>NT${price}</p>
+            <button onClick={onAdd}>加入購物車</button>
         </div>
     );
 }
