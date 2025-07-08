@@ -8,6 +8,8 @@ import Header from './components/Header';
 import { Routes, Route, Link } from 'react-router-dom';
 import CartIcon from './components/CartIcon';
 import HomePageIcon from './components/HomePageIcon';
+import MessageForm from './components/MessageForm';
+import MessageLink from './components/MessageLink';
 
 function App() {
   //const [count, setCount] = useState(0)
@@ -54,6 +56,7 @@ function App() {
       <div style={{position:'relative'}}>
         <HomePageIcon/>
         <CartIcon count = {cart.length}></CartIcon>
+        <MessageLink />
         <Routes>
           <Route path='/'element={
             <div style={{display:'flex', justifyContent:'center', flexWrap:'wrap'}}>
@@ -62,7 +65,7 @@ function App() {
               <ProductCard key = {index}{...item} onAdd={()=>addToCart(item)}></ProductCard>
             ))
           }
-          </div>
+            </div>
           }>
           </Route>
         <Route path='/cart' element = {
@@ -85,9 +88,12 @@ function App() {
               }
             </p>
           </div>
-        }>
-
-        </Route>
+        }></Route>
+         <Route path='/messageForm' element = {
+            <div>
+              <MessageForm/>
+            </div>
+         }></Route>
       </Routes>
         </div>
     </div>
