@@ -1,6 +1,6 @@
 //import reactLogo from './assets/react.svg'
 //import viteLogo from '/vite.svg'
-import { useState } from 'react';
+import {useState } from 'react';
 import './App.css'
 import ProductCard from './components/ProductCard';
 import products from './data/products';
@@ -10,10 +10,12 @@ import CartIcon from './components/CartIcon';
 import HomePageIcon from './components/HomePageIcon';
 import MessageForm from './components/MessageForm';
 import MessageLink from './components/MessageLink';
+import { useCart } from './context/CartContext';
+import MessageList from './components/MessageList';
 
 function App() {
   //const [count, setCount] = useState(0)
-  const [cart, setCart] = useState([]);
+  const {cart, setCart} = useCart();
   function addToCart(product){
     setCart(
       prevCart =>{
@@ -62,7 +64,7 @@ function App() {
             <div style={{display:'flex', justifyContent:'center', flexWrap:'wrap'}}>
           {
             products.map((item , index) => (
-              <ProductCard key = {index}{...item} onAdd={()=>addToCart(item)}></ProductCard>
+              <ProductCard key = {index}{...item} onAdd={()=>addToCart(item)}/>
             ))
           }
             </div>
@@ -94,6 +96,7 @@ function App() {
               <MessageForm/>
             </div>
          }></Route>
+         <Route path="/messages" element={<MessageList />} />
       </Routes>
         </div>
     </div>
